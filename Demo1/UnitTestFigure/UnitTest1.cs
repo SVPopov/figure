@@ -36,10 +36,10 @@ namespace UnitTestFigure
 
 
         [TestMethod]
-        public void ShouldCalcTrangleArea()
+        public void ShouldCalcTriangleArea()
         {
             // Arrange
-            Figure figure = new Trangle(5, 4, 3);
+            Figure figure = new Triangle(5, 4, 3);
             double expectedArea = 6;
             double eps = 0.00001;
 
@@ -59,11 +59,11 @@ namespace UnitTestFigure
             // Act
 
             // Assert
-            Assert.ThrowsException<FigureException>(() => figure = new Trangle(5, -4, 3));
+            Assert.ThrowsException<FigureException>(() => figure = new Triangle(5, -4, 3));
         }
 
         [TestMethod]
-        public void ShouldThrowExceptionForIncorrectTrangle()
+        public void ShouldThrowExceptionForIncorrectTriangle()
         {
             // Arrange
             Figure figure;
@@ -71,7 +71,7 @@ namespace UnitTestFigure
             // Act
 
             // Assert
-            Assert.ThrowsException<FigureException>(() => figure = new Trangle(5, 4, 1));
+            Assert.ThrowsException<FigureException>(() => figure = new Triangle(5, 4, 1));
         }
 
         [TestMethod]
@@ -86,29 +86,29 @@ namespace UnitTestFigure
             Assert.IsInstanceOfType(figure, typeof(Circle));
 
             // Act2
-            figure = new Trangle(5, 4, 3);
+            figure = new Triangle(5, 4, 3);
             // Assert2
-            Assert.IsInstanceOfType(figure, typeof(Trangle));
+            Assert.IsInstanceOfType(figure, typeof(Triangle));
         }
 
 
         [TestMethod]
         [DataRow(5, 4, 3, true)]
         [DataRow(5, 3, 3, false)]
-        public void ShouldCheckRectTrangle(int a, int b, int c, bool exp)
+        public void ShouldCheckRectTriangle(int a, int b, int c, bool exp)
         {
             // Arrange
-            Figure figure = new Trangle(a, b, c);
+            Figure figure = new Triangle(a, b, c);
 
             // Act
-            if (figure is Trangle trangle)
+            if (figure is Triangle triangle)
             {
-                var act = (figure as Trangle)?.IsRectAngle();
+                var act = (figure as Triangle)?.IsRectAngle();
                 // Assert
                 Assert.AreEqual(exp, act);
             }
             else {
-                Assert.ThrowsException<FigureException>(() => throw new FigureException($"This instance isn't trangle, {nameof(figure)}"));
+                Assert.ThrowsException<FigureException>(() => throw new FigureException($"This instance isn't triangle, {nameof(figure)}"));
             }
         }
     }

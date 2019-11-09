@@ -2,7 +2,7 @@
 
 namespace FigureLib
 {
-    public class Trangle : Figure
+    public class Triangle : Figure
     {
         private double eps = 0.000001;
 
@@ -10,7 +10,7 @@ namespace FigureLib
         public double B { get; private set; }
         public double C { get; private set; }
 
-        public Trangle(double a, double b, double c)
+        public Triangle(double a, double b, double c)
         {
             this.SetSides(a, b, c);
         }
@@ -19,12 +19,12 @@ namespace FigureLib
         {
             if (a <= 0 || b <= 0 || c <= 0)
             {
-                throw new FigureException($"Side of trangle can't be less that 0 or equal");
+                throw new FigureException($"Side of triangle can't be less that 0 or equal");
             }
 
             if (a + b <= c || a + c <= b || c + b <= a)
             {
-                throw new FigureException($"trangle ({a}:{b}:{c}) does not exist");
+                throw new FigureException($"triangle ({a}:{b}:{c}) does not exist");
             }
 
             this.A = a;
